@@ -1,0 +1,203 @@
+/* GENERAL RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* GENERAL STYLES */
+:root {
+  --clr-neutral-100: hsla(0, 0%, 100%, 1);
+
+  /* Perfect fourth */
+  --spacing-unit: 1.33;
+  --space-300: calc(1rem / var(--spacing-unit));
+  --space-400: 1rem;
+  --space-500: calc(var(--space-400) * var(--spacing-unit));
+  --space-600: calc(var(--space-500) * var(--spacing-unit));
+  --space-700: calc(var(--space-600) * var(--spacing-unit));
+  --space-800: calc(var(--space-700) * var(--spacing-unit));
+  --space-900: calc(var(--space-800) * var(--spacing-unit));
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  --ff-base: "Open Sans", sans-serif;
+
+  /* Major third */
+  --fs-unit: 1.25;
+  --fs-300: calc(1rem / var(--fs-unit));
+  --fs-400: 1rem;
+  --fs-500: calc(var(--fs-400) * var(--fs-unit));
+  --fs-600: calc(var(--fs-500) * var(--fs-unit));
+  --fs-700: calc(var(--fs-600) * var(--fs-unit));
+  --fs-800: calc(var(--fs-700) * var(--fs-unit));
+  --fs-900: calc(var(--fs-800) * var(--fs-unit));
+  --fs-1000: calc(var(--fs-900) * 1.5);
+}
+
+body {
+  font-family: var(--ff-base);
+}
+
+.pricing {
+  background-image: url("images/pattern (1).svg");
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-900);
+
+  display: grid;
+  justify-content: center;
+  align-content: start;
+}
+
+.pricing__title-container {
+  position: relative;
+}
+.pricing__title {
+  font-size: var(--fs-1000);
+  font-weight: 900;
+
+  margin-bottom: var(--space-700);
+}
+.pricing__title-eyebrow {
+  font-weight: 900;
+  color: rgb(132, 43, 176);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pricing__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-500);
+}
+
+/* Special trick for border around card. (better performace compared to using border-image on card only)  */
+.pricing__card-border {
+  padding: 4px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 16px 12px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(to bottom, rgb(0, 255, 255), rgb(126, 255, 126));
+}
+.pricing__card-border.child-card {
+  background: linear-gradient(to bottom, rgb(126, 255, 126), rgb(241, 241, 24));
+}
+.pricing__card-border.premium-card {
+  position: relative;
+  background: linear-gradient(
+    -45deg,
+    rgb(194, 18, 194),
+    rgb(255, 193, 78),
+    rgb(255, 255, 15)
+  );
+}
+.pricing__card-border.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px; /* control the spread */
+  transform: translate(10px, 8px);
+  z-index: -1;
+  background: linear-gradient(
+    -45deg,
+    rgb(194, 18, 194),
+    rgb(255, 193, 78),
+    rgb(255, 255, 15)
+  );
+  filter: blur(10px);
+}
+
+.pricing__card {
+  background-color: var(--clr-neutral-100);
+  padding: var(--space-600);
+  /* border: 2px solid black; */
+  border-radius: 16px;
+  text-align: center;
+  min-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+}
+
+.pricing__eyebrow {
+  font-weight: 600;
+  font-size: var(--fs-300);
+}
+
+.pricing__heading {
+  font-size: var(--fs-800);
+  letter-spacing: -1px;
+}
+
+.pricing__price {
+  font-size: var(--fs-1000);
+}
+
+.pricing__text {
+  font-size: var(--fs-400);
+}
+.pricing__text--sm {
+  font-size: var(--fs-300);
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.bold {
+  font-weight: 700;
+}
+
+.pricing__button {
+  cursor: pointer;
+  align-self: center;
+  font-weight: 600;
+  padding: var(--space-300) var(--space-700);
+  border-radius: var(--space-600);
+  background-color: var(--clr-neutral-100);
+  margin-top: var(--space-600);
+
+  position: relative;
+}
+.pricing__button:hover {
+  transition: background 0.2s ease;
+}
+.pricing__button:focus {
+  outline: none;
+}
+.pricing__button:focus-visible {
+  outline: 1px solid blue;
+}
